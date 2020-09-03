@@ -86,6 +86,12 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },{
+    title:'Pikachu Wins Build Week',
+    date:'Sep 2nd, 2020',
+    firstParagraph:"Pokem ipsum dolor sit amet Team Rocket Deoxys Psychic ut enim ad minim veniam Voltorb Ash. Fuchsia City Rainbow Badge Ferroseed the enemy Pokemon fainted Yellow Bellossom Duosion. Blue Arbok Togetic Ursaring Vigoroth Machamp Shelgon. Swift Jumpluff Magmortar Tyrogue Linoone Heracross Farfetch'd. Hoenn Mismagius Mantyke Lillipup Yamask Torkoal Magneton.",
+    secondParagraph:"Poison Sting Beldum Misdreavus Ice Darmanitan Poliwhirl Super Potion. Leech Life Hidden Machine Pokemon Master Purrloin Misdreavus Yanmega Carracosta. Blizzard Bill Red ex ea commodo consequat Thunder Badge Jellicent Shaymin. Soul Badge Mewtwo Strikes Back Calcium Teddiursa Swinub Azurill Poliwhirl.",
+    thirdParagraph:"Mineral Badge Voltorb Barboach Hive Badge Ponyta Purugly Combusken. Pokemon Heroes Technical Machine Sawsbuck Mystery Gift Gigalith Darumaka Rattata."
   }
 ];
 
@@ -114,3 +120,86 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+// function articleMaker(articleObj){
+//   /*
+//   <div.article>
+//     <h2> data[0].title
+//     <p.date> data[0].date
+//     <p> data[0].firstparagraph
+//     <p> data[0].secondparagraph
+//     <p> data[0].thirdparagraph
+//     <span.expandButton> '+'
+// */
+
+//   let articleFrame = document.createElement('div');
+//   articleFrame.classList.add('article');
+
+//   let newArticle = articleFrame;
+//   return newArticle;
+// }
+// const articleOne = articleMaker(data);
+function articleMaker(articleObj){
+
+  //create html elements
+  let newArticle = document.createElement('div');
+  let artTitle = document.createElement('h4');
+  let artDate = document.createElement('p');
+  let artP1 = document.createElement('p');
+  let artP2 = document.createElement('p');
+  let artP3 = document.createElement('p');
+  let expBtn = document.createElement('span');
+
+  //assign content
+  artTitle.textContent = articleObj.title;
+  artDate.textContent = articleObj.date;
+  artP1.textContent = articleObj.firstParagraph;
+  artP2.textContent = articleObj.secondParagraph;
+  artP3.textContent = articleObj.thirdParagraph;
+  expBtn.textContent = '+';
+
+  //add css classes
+  newArticle.classList.add('article');
+  artDate.classList.add('date');
+  
+  //MORE CSS
+  expBtn.classList.add('expandButton');
+
+  //compile article element
+  newArticle.append(artTitle,artDate,artP1,artP2,artP3,expBtn);
+
+  
+  //new span
+  // let btnSpan = document.createElement('span');
+  
+  //event listener for +span
+  expBtn.addEventListener('click', (e)=>{
+    const parent = e.target.parentElement;
+    // console.log('clicked the button');
+    // console.log(e.currentTarget);
+    // console.log(e.target.parentElement)
+
+    if(parent.classList.contains('article-open')){
+      parent.classList.remove('article-open');
+      parent.style.removeProperty('height');
+    }else{
+      parent.classList.add('article-open');
+      parent.style.height="auto";
+    }
+  });
+  
+
+  //console log for testing
+  // console.log(newArticle);
+  return newArticle;
+}
+
+// articleMaker(data[0]);
+const articlesContainer = document.querySelector('div.articles');
+
+data.forEach((item) => {
+  const newArticle = articleMaker(item);
+  articlesContainer.append(newArticle);
+});
+
+
