@@ -6,7 +6,8 @@ let menuItems = [
   "What's New",
   'Tech Trends',
   'Music',
-  'Log Out'
+  'Log Out',
+  'Pikachu'
 ];
 
 /* 
@@ -38,8 +39,9 @@ function menuMaker (menuArray){
   const menuList = document.createElement('ul');
 
   newMenu.classList.add('menu');
+  
   //TESTING
-  newMenu.classList.add('menu--open');
+  // newMenu.classList.add('menu--open');
 
 
   //for each item in array
@@ -53,18 +55,25 @@ function menuMaker (menuArray){
   
   //grab existing header and menu image
   const menuImg = document.querySelector('img.menu-button');
-  const header = document.querySelector('div.header');
+  // const header = document.querySelector('div.header');
   
   //connect elements together
   // el: to be wrapped, wrapper
   // el.parentNode.insertBefore(wrapper, el);
   menuImg.parentNode.insertBefore(newMenu,menuImg);
-
   newMenu.append(menuList);
   
 
   // not this:
   // newMenu.append(menuImg,menuList);
+
+  menuImg.addEventListener('click',(e)=>{
+    if(newMenu.classList.contains('menu--open')){
+      newMenu.classList.remove('menu--open');
+    }else{
+      newMenu.classList.add('menu--open');
+    }
+  });
 
   //return 
   return newMenu;
