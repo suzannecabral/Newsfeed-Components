@@ -174,7 +174,18 @@ function articleMaker(articleObj){
   
   //event listener for +span
   expBtn.addEventListener('click', (e)=>{
-    console.log('clicked the button');
+    const parent = e.target.parentElement;
+    // console.log('clicked the button');
+    // console.log(e.currentTarget);
+    // console.log(e.target.parentElement)
+
+    if(parent.classList.contains('article-open')){
+      parent.classList.remove('article-open');
+      parent.style.removeProperty('height');
+    }else{
+    parent.classList.add('article-open');
+      parent.style.height="auto";
+    }
   });
   
 
