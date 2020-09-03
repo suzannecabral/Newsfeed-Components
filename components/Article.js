@@ -183,7 +183,7 @@ function articleMaker(articleObj){
       parent.classList.remove('article-open');
       parent.style.removeProperty('height');
     }else{
-    parent.classList.add('article-open');
+      parent.classList.add('article-open');
       parent.style.height="auto";
     }
   });

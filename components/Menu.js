@@ -38,6 +38,9 @@ function menuMaker (menuArray){
   const menuList = document.createElement('ul');
 
   newMenu.classList.add('menu');
+  //TESTING
+  newMenu.classList.add('menu--open');
+
 
   //for each item in array
   menuArray.forEach((item)=>{
@@ -47,14 +50,21 @@ function menuMaker (menuArray){
     newLink.textContent = item;
     menuList.append(newLink);
   });
-  // debugger
-  //grab existing header and menu image
-  // const header = document.querySelector('div.header');
-  const menuImg = document.querySelector('img.menu-button');
-
   
-  //connect elements together, not in dom yet
-  newMenu.append(menuImg,menuList);
+  //grab existing header and menu image
+  const menuImg = document.querySelector('img.menu-button');
+  const header = document.querySelector('div.header');
+  
+  //connect elements together
+  // el: to be wrapped, wrapper
+  // el.parentNode.insertBefore(wrapper, el);
+  menuImg.parentNode.insertBefore(newMenu,menuImg);
+
+  newMenu.append(menuList);
+  
+
+  // not this:
+  // newMenu.append(menuImg,menuList);
 
   //return 
   return newMenu;
