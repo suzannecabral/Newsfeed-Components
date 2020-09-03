@@ -161,6 +161,9 @@ function articleMaker(articleObj){
   //add css classes
   newArticle.classList.add('article');
   artDate.classList.add('date');
+  
+  //MORE CSS
+  expBtn.classList.add('expandButton');
 
   //compile article element
   newArticle.append(artTitle,artDate,artP1,artP2,artP3,expBtn);
