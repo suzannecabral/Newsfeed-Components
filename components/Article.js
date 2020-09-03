@@ -148,7 +148,7 @@ function articleMaker(articleObj){
   let artP1 = document.createElement('p');
   let artP2 = document.createElement('p');
   let artP3 = document.createElement('p');
-  let expBtn = document.createElement('p');
+  let expBtn = document.createElement('span');
 
   //assign content
   artTitle.textContent = articleObj.title;
@@ -165,19 +165,27 @@ function articleMaker(articleObj){
   //compile article element
   newArticle.append(artTitle,artDate,artP1,artP2,artP3,expBtn);
 
-  //append article element to html
-  const articlesContainer = document.querySelector('div.articles');
-  articlesContainer.append(newArticle);
+  
+  //new span
+  // let btnSpan = document.createElement('span');
+  
+  //event listener for +span
+  expBtn.addEventListener('click', (e)=>{
+    console.log('clicked the button');
+  });
+  
 
   //console log for testing
-  console.log(newArticle);
-
+  // console.log(newArticle);
+  return newArticle;
 }
 
-articleMaker(data[0]);
+// articleMaker(data[0]);
+const articlesContainer = document.querySelector('div.articles');
 
 data.forEach((item) => {
-  articleMaker(item);
+  const newArticle = articleMaker(item);
+  articlesContainer.append(newArticle);
 });
 
 
